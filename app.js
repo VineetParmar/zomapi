@@ -120,7 +120,10 @@ app.get('/menu',(req,res) => {
   // res.send(id)
 
 app.get('/quicksearch',(req,res) => {
-    res.send(quickSearch)
+  db.collection('mealtype').find().toArray((err,result) => {
+    if(err) throw err;
+    res.send(result)
+  })
 })
 
 // app.get('/details/:id',(req,res)=>{
